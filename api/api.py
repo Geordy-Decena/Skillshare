@@ -16,24 +16,24 @@ class user:
 
     def teachSkillArr():
         allskills = []
-        for i in range(skillTeachCount):
+        for i in range(skillTeachCount-1):
             allSkills.append(userList[activeIndex].teach[i])
         return allSkills
 
     def learnSkillArr():
         allSkills = []
-        for i in range(skillLearnCount):
+        for i in range(skillLearnCount-1):
             allSkills.append(userList[activeIndex].learn[i])
         return allSkills
 
 
 activeIndex = 0
-userCount = 2
+userCount = 3
 userList = []
 testUsers = 3
 
 testEmail = ["john@gmail.com", "doe@gmail.com", "Shirley@gmail.com"]
-testPassword = ["1234", "abcd", "easyAs", "lolsame"]
+testPassword = ["1234", "abcd", "easyAs"]
 
 
 for i in range(testUsers):
@@ -80,11 +80,11 @@ def userDataLearn():
     data = request.get_json()
     skill = data["skill"]
     level = data["level"]
-    userList[activeIndex].learn[userList[activeIndex].skillLearnCount].append([
-        skill, level])
+    userList[activeIndex].learn.append([skill, level])
     userList[activeIndex].skillLearnCount += 1
     return{
-        'skills': userList[activeIndex].learnSkillArr()}
+        'skills': userList[activeIndex].learnSkillArr()
+    }
 
 
 @app.route('/userDataTeach', methods=['GET', 'POST'])
@@ -93,7 +93,7 @@ def userDataTeach():
     data = request.get_json()
     skill = data["skill"]
     level = data["level"]
-    userList[activeIndex].teach[userList[activeIndex].skillLearnCount].append([
+    userList[activeIndex].teach.append([
         skill, level])
     userList[activeIndex].skillLearnCount += 1
     return{
