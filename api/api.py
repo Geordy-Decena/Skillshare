@@ -14,9 +14,21 @@ class user:
         self.email = email
         self.password = password
 
+    def teachSkillArr():
+        allskills = []
+        for i in range(skillTeachCount):
+            allSkills.append(userList[activeIndex].teach[i])
+        return allSkills
+
+    def learnSkillArr():
+        allSkills = []
+        for i in range(skillLearnCount):
+            allSkills.append(userList[activeIndex].learn[i])
+        return allSkills
+
 
 activeIndex = 0
-userCount = 0
+userCount = 2
 userList = []
 testUsers = 3
 
@@ -72,7 +84,7 @@ def userDataLearn():
         skill, level])
     userList[activeIndex].skillLearnCount += 1
     return{
-        'skills': }
+        'skills': userList[activeIndex].learnSkillArr()}
 
 
 @app.route('/userDataTeach', methods=['GET', 'POST'])
@@ -84,7 +96,8 @@ def userDataTeach():
     userList[activeIndex].teach[userList[activeIndex].skillLearnCount].append([
         skill, level])
     userList[activeIndex].skillLearnCount += 1
-    return
+    return{
+        'skills': userList[activeIndex].teachSkillArr()}
 
 
 def indexOfEmail(email):
