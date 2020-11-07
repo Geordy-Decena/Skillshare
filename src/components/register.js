@@ -1,6 +1,7 @@
 import React, { useState, useEffect, Fragment } from 'react';
 import '../css/homepage.css';
 import book from '../imgs/book.png'
+import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 
 function Register() {
 
@@ -8,6 +9,10 @@ function Register() {
         email: "",
         password: ""
     });
+
+    const [isAccess, setAccess] = useState({
+        access: false
+    })
 
     function onChangeEmail(e) {
         setUser({ ...isUser, email: e.target.value })
@@ -18,7 +23,18 @@ function Register() {
     }
 
     function submit() {
-        console.log(isUser)
+        const data = "test";
+        const response = fetch('/loginData', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: data
+        }).then(res => res.text()).then(data => console.log(data))
+        if (response.ok) {
+            console.log("it worked")
+        }
     }
 
     return (
@@ -41,7 +57,9 @@ function Register() {
                 <div className="submit" onClick={() => submit()}>
                     Register
                 </div>
-                <div className="register">Already have an account? Login here!</div>
+                <div className="register">
+                    <Link to="/">Already have an account? Login here!</Link>
+                </div>
             </div>
         </Fragment>
     );

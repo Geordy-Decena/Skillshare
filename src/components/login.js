@@ -22,14 +22,6 @@ function Login() {
         console.log(isUser)
     }
 
-    function register() {
-        return (
-            <Fragment>
-                <Link to="/register"></Link>
-            </Fragment>
-        )
-    }
-
     return (
         <Fragment>
             <div className="homepageDiv">
@@ -50,7 +42,9 @@ function Login() {
                 <div className="submit" onClick={() => submit()}>
                     Login
                 </div>
-                <div className="register" onClick={() => register()}>Don't have an account? Register Here?</div>
+                <div className="register" >
+                    <Link to="/register">Don't have an account? Register Here?</Link>
+                </div>
             </div>
         </Fragment>
     );
