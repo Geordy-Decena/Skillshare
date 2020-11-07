@@ -11,7 +11,7 @@ def api():
 
 
 @app.route('/logindata', methods=['GET'])
-def api():
+def login():
 
     return {
         # sends data to react
