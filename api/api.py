@@ -14,8 +14,8 @@ passwords = ["fkGeordy", "same", "theCarry"]
 @app.route('/loginData', methods=['GET', 'POST'])
 def login():
     data = request.get_json()
-    email = data["email"])
-    password=data["password"]
+    email = data["email"]
+    password = data["password"]
     if(email in emails and passwords[emails.index(email)] == password):
         return{'auth': str(1)}
     else:
@@ -28,7 +28,6 @@ def login():
 def register():
     data = request.get_json()
     email = data["email"]
-    password=data["password"]
+    password = data["password"]
     if(email in emails):
         return{'auth': str(1)}
-
