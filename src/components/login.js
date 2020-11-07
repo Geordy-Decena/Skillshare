@@ -18,8 +18,18 @@ function Login() {
         setUser({ ...isUser, password: e.target.value })
     }
 
-    function submit() {
-        console.log(isUser)
+    function submitd() {
+        const response = fetch('/registerData', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify(isUser)
+        }).then(res => res.text()).then(data => console.log(data))
+        if (response.ok) {
+            console.log("it worked")
+        }
     }
 
     return (
@@ -39,7 +49,7 @@ function Login() {
                 <div className="bookImgDiv">
                     <img src={book} className="bookImg"></img>
                 </div>
-                <div className="submit" onClick={() => submit()}>
+                <div className="submit" onClick={() => submitd()}>
                     Login
                 </div>
                 <div className="register" >
