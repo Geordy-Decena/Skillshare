@@ -1,0 +1,124 @@
+.learnList{
+    position: relative;
+    margin: auto;
+    top: 200px;
+    background-color: none;
+    border: 2px solid black;
+    width: 300px;
+    height: 400px;
+    text-align: center;
+}
+
+.learnH1{
+    padding: 10px;
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+.skill{
+    position: relative;
+    width: 100%;
+    height: 30px;
+}
+
+.skill h1{
+    position: absolute;
+    left: 20px;
+    font-size: 20px;
+    font-weight: 100;
+}
+
+.skill h2{
+    position: absolute;
+    right: 42px;
+    font-size: 20px;
+    font-weight: 100;
+}
+
+.skillTitle{
+    position: relative;
+    margin-bottom: 40px;
+}
+
+.skillTitle h1{
+    position: absolute;
+    left: 20px;
+    font-size: 20px;
+}
+
+.skillTitle h2{
+    position: absolute;
+    right: 20px;
+    font-size: 20px;
+}
+
+.addSkill{
+    position: relative;
+    top: 100px;
+    margin: auto;
+    width: 100px;
+    height: 25px;
+    padding-top: 8px;
+    border:2px solid black;
+}
+
+.listOfSkills{
+    position: relative;
+    top: -350px;
+    margin: auto;
+    border: 2px solid black;
+    width: 600px;
+    height: 700px;
+    background-color: white;
+    text-align: center;
+    padding-right: 40px;
+    padding-top: 40px;
+}
+
+
+.availableSkills{
+    position: relative;
+    display: inline-block;
+    width: 250px;
+}
+
+.availableSkills h1{
+    position: relative;
+    display: inline-block;
+    font-size: 20px;
+    font-weight: 300;
+    width: 180px;
+    margin-bottom: 20px;
+}
+
+.exit{
+    position: absolute;
+    top: 10px;
+    right: 20px;
+}
+
+.inputSkillDiv{
+    position: relative;
+    top: 50px;
+    margin: auto;
+    transform: translateX(30px);
+    width: 260px;
+    height: 40px;
+    font-size: 20px;
+}
+
+.inputSkillDiv h1{
+    position: absolute;
+    font-size: 30px;
+    font-weight: 300;
+    left: 0px;
+}
+
+.inputSkill{
+    position: absolute;
+    top: 0px;
+    width: 50px;
+    padding: 5px;
+    font-size: 20px;
+    right: 0px;
+}
