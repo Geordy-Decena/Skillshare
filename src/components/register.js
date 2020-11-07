@@ -23,14 +23,13 @@ function Register() {
     }
 
     function submit() {
-        const data = "test";
         const response = fetch('/loginData', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
             },
-            body: data
+            body: JSON.stringify(isUser)
         }).then(res => res.text()).then(data => console.log(data))
         if (response.ok) {
             console.log("it worked")
