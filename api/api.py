@@ -14,10 +14,25 @@ class user:
         self.email = email
         self.password = password
 
+    def teachSkillArr():
+        allSkills = [learn
+
+    def learnSkillArr():
+
+
 
 activeIndex = 0
 userCount = 0
 userList = []
+testUsers = 3
+
+testEmail = ["john@gmail.com", "doe@gmail.com", "Shirley@gmail.com"]
+testPassword = ["1234", "abcd", "easyAs", "lolsame"]
+
+
+for i in range(testUsers):
+    userList.append(user(testEmail[i], testPassword[i]))
+
 
 app = Flask(__name__)
 
@@ -62,7 +77,8 @@ def userDataLearn():
     userList[activeIndex].learn[userList[activeIndex].skillLearnCount].append([
         skill, level])
     userList[activeIndex].skillLearnCount += 1
-    return
+    return{
+        'skills':}
 
 
 @app.route('/userDataTeach', methods=['GET', 'POST'])
