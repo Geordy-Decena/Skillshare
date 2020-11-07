@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Login from './components/login'
 import Register from './components/register'
 import Playground from './components/playground'
-import EditProfile from './components/editProfile'
+import EditProfile from './components/learnList'
 
 function App() {
   return (
