@@ -1,0 +1,89 @@
+textarea, input { outline: none; }
+
+.homepageDiv{
+    position: absolute;
+    margin: 0px;
+    padding: 0px;
+    background-color: #FCDEBE;
+    width: 100%;
+    height: 100%;
+}
+
+.form{
+    position: relative;
+    top: 50px;
+    background-color: #FCDEBE;
+    box-shadow: 2px 2px 5px black;
+    width: 400px;
+    height: 500px;
+    margin: auto;
+}
+
+.form h1{
+    padding-top: 20px;
+    text-align: center;
+    color: #3A445D;
+    font-size: 40px;
+    
+}
+
+.form h2{
+    padding-top: 20px;
+    text-align: center;
+    color: #3A445D;
+    
+}
+
+.inputDiv{
+    border-bottom: 2px solid #3A445D;
+    margin: auto;
+    width: 250px;
+    padding-top: 10px;
+    text-align: center;
+    color: #3A445D;
+}
+
+.input{
+    font-size: 20px;
+    border: none;
+    background-color: #FCDEBE;
+    color: #3A445D;
+    text-align: center;
+}
+
+.bookImgDiv{
+    position: relative;
+    top: 0px;
+    margin: auto;
+    width: 100px;
+    height: 100px;
+}
+
+.bookImg{
+    margin: auto;
+    width: 100px;
+    height: 100px;
+    transform: scale(2);
+}
+
+.submit{
+    top: -280px;
+    position: relative;
+    margin: auto;
+    width: 100px;
+    color:  #FCDEBE;
+    background-color: #3A445D;
+    text-align: center;
+    font-size: 25px;
+    padding: 5px;
+}
+
+.register{
+    position: relative;
+    top: -260px;
+    margin: auto;
+    width: 300px;
+    color: #3A445D;
+    font-size: 18px;
+    text-align: center;
+}
