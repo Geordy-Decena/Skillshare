@@ -5,7 +5,7 @@ from flask import Flask, request
 
 app = Flask(__name__)
 
-usernames = ["Ben", "GeordyIsABitch", "Yi Li"]
+emails = ["Ben", "GeordyIsABitch", "Yi Li"]
 passwords = ["fkGeordy", "same", "theCarry"]
 
 
@@ -14,9 +14,12 @@ def login():
     data = request.get_json()
     email = data["email"])
     password=data["password"]
-    return{
-        'auth': 1
-    }
+    if(email in emails and passwords[emails.index(email)] == password):
+        return{'auth': 1}
+    else:
+        return{
+            'auth': 0
+        }
 
 
 @app.route('/registerData', methods=['GET', 'POST'])
