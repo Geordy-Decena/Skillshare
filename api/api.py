@@ -14,12 +14,6 @@ class user:
         self.email = email
         self.password = password
 
-    def teachSkillArr():
-        allSkills = [learn
-
-    def learnSkillArr():
-
-
 
 activeIndex = 0
 userCount = 0
@@ -78,7 +72,7 @@ def userDataLearn():
         skill, level])
     userList[activeIndex].skillLearnCount += 1
     return{
-        'skills':}
+        'skills': }
 
 
 @app.route('/userDataTeach', methods=['GET', 'POST'])
