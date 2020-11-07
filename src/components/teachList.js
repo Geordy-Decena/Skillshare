@@ -3,7 +3,7 @@ import '../css/learnList.css';
 import book from '../imgs/book.png'
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 
-function LearnList(props) {
+function TeachList(props) {
 
     const [isUserList, setUserList] = useState({
         list: [["Basketball", 3], ["Soccer", 3], ["Hockey", 3], ["Baseball", 3]]
@@ -22,6 +22,7 @@ function LearnList(props) {
 
 
     function submitSkill() {
+        props.handleClick()
         if (isNewSkill.skill != "") {
             listActivate()
             console.log(isNewSkill)
@@ -35,13 +36,13 @@ function LearnList(props) {
                 level: 1
             })
         }
-        const response = fetch('/userDataLearn', {
+        const response = fetch('/userDataTeach', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
             },
-            body: JSON.stringify(isNewSkill)
+            body: JSON.stringify("run")
         }).then(res => res.text()).then(data => console.log(data))
         if (response.ok) {
             console.log("it worked")
@@ -65,26 +66,28 @@ function LearnList(props) {
 
     return (
         <Fragment>
-            <div className="learnList">
-                <h1 className="learnH1">What I want to learn</h1>
-                <div className="skillTitle">
-                    <h1>Skill</h1>
-                    <h2>Rating</h2>
+            {(isList.active == false) && (
+                <div className="learnList">
+                    <h1 className="learnH1">What I want to Teach</h1>
+                    <div className="skillTitle">
+                        <h1>Skill</h1>
+                        <h2>Rating</h2>
+                    </div>
+                    {isUserList.list.map((skill) => {
+                        return (
+                            <div className="skill">
+                                <h1>{skill[0]}</h1>
+                                <h2>{skill[1]}</h2>
+                            </div>
+                        )
+                    })}
+                    <div className="addSkillBtn" onClick={() => listActivate()}>Add Skill</div>
                 </div>
-                {isUserList.list.map((skill) => {
-                    return (
-                        <div className="skill">
-                            <h1>{skill[0]}</h1>
-                            <h2>{skill[1]}</h2>
-                        </div>
-                    )
-                })}
-                <div className="addSkillBtn" onClick={() => listActivate()}>Add Skill</div>
-            </div>
+            )}
             {(isList.active == true) && (
                 <Fragment>
-                    <div className="listOfSkillsDiv">
-                        <div className="listOfSkills">
+                    <div className="listOfSkillsTeachDiv">
+                        <div className="listOfSkillsTeach">
                             {isList.list.map((skill) => {
                                 return (
                                     <div className="availableSkills" onChange={(e) => selectRadioButton(e)}>
@@ -108,4 +111,4 @@ function LearnList(props) {
     );
 }
 
-export default LearnList;
+export default TeachList;

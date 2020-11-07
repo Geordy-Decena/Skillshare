@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Login from './components/login'
 import Register from './components/register'
 import Playground from './components/playground'
-import EditProfile from './components/learnList'
+import Connect from './components/connection'
 
 function App() {
   return (
@@ -15,7 +15,7 @@ function App() {
           <Route exact path="/" component={Login} />
           <Route exact path="/register" component={Register} />
           <Route exact path="/playground" component={Playground} />
-          <Route exact path="/editProfile" component={EditProfile} />
+          <Route exact path="/connect" component={Connect} />
         </Switch>
       </Router>
     </Fragment>
