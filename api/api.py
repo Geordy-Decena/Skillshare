@@ -21,16 +21,15 @@ userList = []
 
 app = Flask(__name__)
 
-emails = ["Ben", "GeordyIsABitch", "Yi Li"]
-passwords = ["fkGeordy", "same", "theCarry"]
-
 
 @app.route('/loginData', methods=['GET', 'POST'])
 def loginData():
     data = request.get_json()
     email = data["email"]
     password = data["password"]
-    if(email in emails and passwords[emails.index(email)] == password):
+    if(indexOfEmail(email) != -1 and userList[indexOfEmail(email)].password == password):
+        activeIndex = indexOfEmail(email)
+        print(activeIndex)
         return{'auth': str(1)}
     else:
         return{
@@ -44,7 +43,7 @@ def registerData():
     data = request.get_json()
     email = data["email"]
     password = data["password"]
-    if(email in emails):
+    if(indexOfEmail(email) != -1):
         return{'auth': str(0)}
     else:
         userList.append(user(email, password))
@@ -60,7 +59,28 @@ def userDataLearn():
     data = request.get_json()
     skill = data["skill"]
     level = data["level"]
-    userList.learn[userList[activeIndex].skillLearnCount].append([
+    userList[activeIndex].learn[userList[activeIndex].skillLearnCount].append([
         skill, level])
     userList[activeIndex].skillLearnCount += 1
-    return{}
+    return
+
+
+@app.route('/userDataTeach', methods=['GET', 'POST'])
+def userDataTeach():
+    global activeIndex
+    data = request.get_json()
+    skill = data["skill"]
+    level = data["level"]
+    userList[activeIndex].teach[userList[activeIndex].skillLearnCount].append([
+        skill, level])
+    userList[activeIndex].skillLearnCount += 1
+    return
+
+
+def indexOfEmail(email):
+    global userCount
+    for i in range(userCount):
+        if(userList[i].email == email):
+            return i
+
+    return -1
