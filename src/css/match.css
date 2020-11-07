@@ -1,0 +1,35 @@
+.matchDiv{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #FCDEBE;
+}
+.match{
+    position: relative;
+    margin: auto;
+    width: 900px;
+    height: 600px;
+    top: 40px;
+    background-color: #FCDEBE;
+    box-shadow: 2px 2px 5px black;
+}
+
+.matchDiv h1{
+    position: relative;
+    margin: auto;
+    width: 700px;
+    font-size: 70px;
+    top: 50px;
+    text-align: center;
+    font-weight: 300;
+}
+
+.user1{
+    position: absolute;
+    transform: scale(0.5) translate(0px,-100px);
+}
+
+.user2{
+    position: absolute;
+    transform: scale(0.5) translate(740px,-100px);
+}
