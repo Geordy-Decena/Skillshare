@@ -10,7 +10,7 @@ def api():
     }
 
 
-@app.route('/logindata', methods=['GET'])
+@app.route('/loginData', methods=['GET'])
 def login():
 
     return {
