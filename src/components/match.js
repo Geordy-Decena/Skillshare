@@ -11,6 +11,20 @@ function Match() {
         skill2: ""
     })
 
+    useEffect(() => {
+        const response = fetch('/computeMatch', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: {skill:"React"}
+        }).then(res => res.text()).then(data => console.log(data))
+        if (response.ok) {
+            console.log("it worked")
+        }
+    }, [])
+
     return (
         <Fragment>
             <div className="matchDiv">

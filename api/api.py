@@ -69,7 +69,6 @@ def loginData():
     password = data["password"]
     if(indexOfEmail(email) != -1 and userList[indexOfEmail(email)].password == password):
         activeIndex = indexOfEmail(email)
-        print(activeIndex)
         return{'auth': str(1)}
     else:
         return{
@@ -88,8 +87,6 @@ def registerData():
     else:
         userList.append(user(email, password))
         userCount += 1
-        print(userList[0].email)
-
         return{'auth': str(1)}
 
 
@@ -104,7 +101,6 @@ def userDataLearn():
     return{
         'levels': userList[activeIndex].learnSkillLvlArr(),
         'skills': userList[activeIndex].learnSkillArr()
-
     }
 
 
@@ -128,7 +124,6 @@ def computeMatch():
     matchedIndex = -1
     match = "not found"
     didWork = False
-    list(set(a).intersection(b))
     data = request.get_json()
     skillToLearn = data["skill"]
     #level = data["level"]
@@ -136,10 +131,14 @@ def computeMatch():
     for i in range(userCount):
         if(i != activeIndex and indexOfTeach(userList[i], skillToLearn) != -1):
             matchedIndex = i
+            # list(set(a).intersection(b))
 
     if(matchedIndex != -1):
+        didWork = True
         match = userList[matchIndex]
 
+    print(didWork)
+    print(match.email)
     return{
         'found': str(didWork),
         'match': match
