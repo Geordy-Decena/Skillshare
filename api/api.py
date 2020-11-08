@@ -3,12 +3,11 @@ import urllib.request
 from flask_cors import CORS
 from flask import Flask, request
 
-
-activeIndex = 0
-matchedIndex = -1
-userCount = 3
+# RESET AFTER!!
+activeIndex = 2
+matchedIndex = 1
+userCount = 4
 userList = []
-testUsers = 3
 
 
 class user:
@@ -48,13 +47,17 @@ class user:
         return allLvls
 
 
-testEmail = ["john@gmail.com", "doe@gmail.com", "Shirley@gmail.com"]
-testPassword = ["1234", "abcd", "easyAs"]
+testEmail = ["john@gmail.com", "doe@gmail.com",
+             "Shirley@gmail.com", "lol@gmail.com"]
+testPassword = ["1234", "abcd", "easyAs", "lol"]
+testLSkills = [["Geography", 7], ["Soccer", 3],
+               ["Biology", 1], ["JavaScript", 4]]
+testTSkills = [["History", 5], ["React", 3], ["Physics", 6], ["Chemistry", 8]]
 
-
-for i in range(testUsers):
+for i in range(userCount):
     userList.append(user(testEmail[i], testPassword[i]))
-
+    userList[i].learn.append(testLSkills[i])
+    userList[i].teach.append(testTSkills[i])
 
 app = Flask(__name__)
 
@@ -173,7 +176,6 @@ def sendTeachData():
     return{
         'levels': userList[activeIndex].teachSkillLvlArr(),
         'skills': userList[activeIndex].teachSkillArr()
-
     }
 
 
