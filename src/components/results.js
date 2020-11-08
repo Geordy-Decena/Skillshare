@@ -32,7 +32,6 @@ function Results() {
     }
 
     function change(data){
-        const data2 = JSON.parse(data);
         setName({match: data})
     }
 
@@ -48,7 +47,7 @@ function Results() {
 
                 <div className='active-user'>show active user</div>
                 <div className='title'>
-                    How would you rate {isName.text} skills?
+                    How would you rate {isName.text}'s skills?
                 </div>
 
                 <div className='contain-input' onChange={(e) => onChangeRating(e)}>
