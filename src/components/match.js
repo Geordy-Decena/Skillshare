@@ -12,13 +12,14 @@ function Match() {
     })
 
     useEffect(() => {
+        console.log("match")
         const response = fetch('/computeMatch', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
             },
-            body: "React"
+            body: "{\"title\":\"Read a boo\"}"
         }).then(res => res.text()).then(data => console.log(data))
         if (response.ok) {
             console.log("it worked")

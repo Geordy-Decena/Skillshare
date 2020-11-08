@@ -6,7 +6,8 @@ import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 function TeachList(props) {
 
     const [isUserList, setUserList] = useState({
-        list: [["Basketball", 3], ["Soccer", 3], ["Hockey", 3], ["Baseball", 3]]
+        list: [],
+        rate: []
     })
 
     const [isList, setList] = useState({
@@ -19,15 +20,25 @@ function TeachList(props) {
         level: 1,
     })
 
+    useEffect(() => {
+        fetch('/sendTeachData').then(
+            res => res.text()
+        ).then(data => prepareData(data));
+    }, [])
 
+    function prepareData(data) {
+        var data2 = JSON.parse(data)
+        setUserList({ ...isUserList, list: data2.skills, rate: data2.levels })
+    }
 
     function submitSkill() {
         props.handleClick()
         if (isNewSkill.skill != "") {
             listActivate()
             console.log(isNewSkill)
-            var query = [[`${isNewSkill.skill}`, isNewSkill.level]]
-            setUserList({ ...isUserList, list: isUserList.list.concat(query) })
+            var query = [`${isNewSkill.skill}`]
+            var query2 = [`${isNewSkill.level}`]
+            setUserList({ ...isUserList, list: isUserList.list.concat(query), rate: isUserList.rate.concat(query2) })
             console.log(isUserList)
         }
         else {
@@ -76,11 +87,19 @@ function TeachList(props) {
                     {isUserList.list.map((skill) => {
                         return (
                             <div className="skillLearn">
-                                <h1>{skill[0]}</h1>
-                                <h2>{skill[1]}</h2>
+                                <h1>{skill}</h1>
                             </div>
                         )
                     })}
+                    <div className="rateLearnDiv">
+                        {isUserList.rate.map((rate) => {
+                            return (
+                                <div className="rateLearn">
+                                    <h1>{rate}</h1>
+                                </div>
+                            )
+                        })}
+                    </div>
                     <div className="addSkillBtn" onClick={() => listActivate()}>Add Skill</div>
                 </div>
             )}

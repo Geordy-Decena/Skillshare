@@ -3,12 +3,11 @@ import urllib.request
 from flask_cors import CORS
 from flask import Flask, request
 
-
-activeIndex = 0
+# RESET AFTER!!
+activeIndex = -1
 matchedIndex = -1
-userCount = 3
+userCount = 4
 userList = []
-testUsers = 3
 
 
 class user:
@@ -24,7 +23,7 @@ class user:
     def learnSkillArr(self):
         allSkills = []
         for i in range(self.skillLearnCount):
-            allSkills.append(userList[activeIndex].learn[i][0])
+            allSkills.append(self.learn[i][0])
         return allSkills
 
     def learnSkillLvlArr(self):
@@ -32,41 +31,45 @@ class user:
         for i in range(self.skillLearnCount):
             # print(i)
             # print(userList[activeIndex].learn[i][1])
-            allLvls.append(userList[activeIndex].learn[i][1])
+            allLvls.append(self.learn[i][1])
         return allLvls
 
     def teachSkillArr(self):
         allSkills = []
         for i in range(self.skillTeachCount):
-            allSkills.append(userList[activeIndex].teach[i][0])
+            allSkills.append(self.teach[i][0])
         return allSkills
 
     def teachSkillLvlArr(self):
         allLvls = []
         for i in range(self.skillTeachCount):
-            allLvls.append(userList[activeIndex].teach[i][1])
+            allLvls.append(self.teach[i][1])
         return allLvls
 
 
-testEmail = ["john@gmail.com", "doe@gmail.com", "Shirley@gmail.com"]
-testPassword = ["1234", "abcd", "easyAs"]
+testEmail = ["john@gmail.com", "doe@gmail.com",
+             "Shirley@gmail.com", "lol@gmail.com"]
+testPassword = ["1234", "abcd", "easyAs", "lol"]
+testLSkills = [["Geography", 7], ["Soccer", 3],
+               ["Biology", 1], ["JavaScript", 4]]
+testTSkills = [["History", 5], ["React", 3], ["Physics", 6], ["Chemistry", 8]]
 
-
-for i in range(testUsers):
+for i in range(userCount):
     userList.append(user(testEmail[i], testPassword[i]))
-
+    # userList[i].learn.append(testLSkills[i])
+    # userList[i].teach.append(testTSkills[i])
 
 app = Flask(__name__)
 
 
 @app.route('/loginData', methods=['GET', 'POST'])
 def loginData():
+    global activeIndex
     data = request.get_json()
     email = data["email"]
     password = data["password"]
     if(indexOfEmail(email) != -1 and userList[indexOfEmail(email)].password == password):
         activeIndex = indexOfEmail(email)
-        print(activeIndex)
         return{'auth': str(1)}
     else:
         return{
@@ -85,8 +88,6 @@ def registerData():
     else:
         userList.append(user(email, password))
         userCount += 1
-        print(userList[0].email)
-
         return{'auth': str(1)}
 
 
@@ -101,7 +102,6 @@ def userDataLearn():
     return{
         'levels': userList[activeIndex].learnSkillLvlArr(),
         'skills': userList[activeIndex].learnSkillArr()
-
     }
 
 
@@ -122,10 +122,11 @@ def userDataTeach():
 @app.route('/computeMatch', methods=['GET', 'POST'])
 def computeMatch():
     global activeIndex
+    global matchedIndex
     matchedIndex = -1
+
     match = "not found"
     didWork = False
-    list(set(a).intersection(b))
     data = request.get_json()
     skillToLearn = data["skill"]
     #level = data["level"]
@@ -133,10 +134,14 @@ def computeMatch():
     for i in range(userCount):
         if(i != activeIndex and indexOfTeach(userList[i], skillToLearn) != -1):
             matchedIndex = i
+            # list(set(a).intersection(b))
 
     if(matchedIndex != -1):
-        match = userList[matchIndex]
+        didWork = True
+        match = "lmfao"
 
+    print(didWork)
+    print(userList[matchedIndex].email)
     return{
         'found': str(didWork),
         'match': match
@@ -171,10 +176,8 @@ def sendLearnData():
 @app.route('/sendTeachData', methods=['GET', 'POST'])
 def sendTeachData():
     return{
-        # 'levels': userList[activeIndex].teachSkillLvlArr(),
-        # 'skills': userList[activeIndex].teachSkillArr()
-        'levels': "hello",
-        'skills': "learn"
+        'levels': userList[activeIndex].teachSkillLvlArr(),
+        'skills': userList[activeIndex].teachSkillArr()
     }
 
 
