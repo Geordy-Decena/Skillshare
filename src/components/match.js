@@ -1,8 +1,10 @@
 import React, { useState, useEffect, Fragment } from 'react';
 import '../css/match.css';
 import user from '../imgs/user.png'
+import Connection from '../components/connection'
+import LearnList from './learnList'
 
-function Match() {
+function Match(props) {
 
     const [isMatch, setMatch] = useState({
         user1: "",
@@ -11,27 +13,10 @@ function Match() {
         skill2: ""
     })
 
-    useEffect(() => {
-<<<<<<< HEAD
-        console.log("match")
-=======
->>>>>>> aae564bf3dd5c6ec4d827237d0e8c7a7d30b47a7
-        const response = fetch('/computeMatch', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
-            },
-<<<<<<< HEAD
-            body: "{\"title\":\"Read a boo\"}"
-=======
-            body: "{\"skill\":\"React\"}"
->>>>>>> aae564bf3dd5c6ec4d827237d0e8c7a7d30b47a7
-        }).then(res => res.text()).then(data => console.log(data))
-        if (response.ok) {
-            console.log("it worked")
-        }
-    }, [])
+    const [isSkill, setSkill] = useState({
+        skill: ""
+    })
+
 
     return (
         <Fragment>
@@ -49,7 +34,7 @@ function Match() {
                     <div className="user1">
                         <div className="username">John</div>
                         <div className="skill">C++</div>
-                        <div className="skill">Calculus</div>
+                        <div className="skill">{props.skill}</div>
                     </div>
                     <div className="users">
                         <div className="username">Name</div>
