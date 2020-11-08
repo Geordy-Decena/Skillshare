@@ -14,12 +14,16 @@ function Connection() {
         window.location.href = "/match"
     }
 
+    function setChange(data) {
+        console.log(data)
+    }
+
     return (
         <Fragment>
             <div className="connection">
                 {isTeach == false && (
                     <div className="learnComp">
-                        <LearnList handleClick={() => { setLearn(!isLearn) }} />
+                        <LearnList handleClick={() => { setLearn(!isLearn) }} decideLearn={(data) => setChange(data)} />
                     </div>
                 )}
                 {isLearn == false && (
