@@ -22,7 +22,7 @@ function Connection(props) {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
             },
-            body: isSkill
+            body: JSON.stringify(isSkill)
         }).then(res => res.text()).then(data => console.log(data))
         if (response.ok) {
             console.log("it worked")
