@@ -35,11 +35,12 @@
 .connect-more{
     position:relative;
     margin: auto;
-    background-color: rgb(0, 0, 0);
     width: 200px;
-    height:30px;
-    border:2px solid black;
+    height: 30px;
     top: 100px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border:2px solid black;
 }
 
 .connect-more h1{

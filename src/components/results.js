@@ -4,29 +4,42 @@ import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 
 function Results() {
 
-    const [isName, setName] = useState({text: ""});
+    const [isName, setName] = useState(
+        {user: "",
+        macth: ""
+    });
 
-    function sendResult(e){
-        const response = fetch('/userRating', {  
+    const[isRating, setRating] = useState({
+        rating: "",
+        skill: ""
+    });
+
+    function onChangeRating(){
+        setRating({...isRating, rating: e.target.value} )
+    }
+
+    function submitRate(e){ 
+        const response = fetch('/userRatings', {  
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
             },
-            body: JSON.stringify(e.target.value)  
+            body: JSON.stringify(isRating)  
         })
         if (response.ok) {
-            console.log("it worked")
+            console.log("pass ratings worked")
         }
-        console.log(e.target.value);
+        console.log(isRating);
     }
    
+    function checkName(){
+
+    }
     useEffect(() => {
-        fetch('/userName').then(
-            res => res.text()
-        ).then(data => console.log(data));
+        fetch('/userName')
+        .then(res => res.text()).then(data => checkName(data));
     }, [])
-    //setName(data.text);
     //split this string in half? these two names here
 
 
@@ -40,8 +53,12 @@ function Results() {
                 </div>
 
             <div className='contain-input'>
-                <input type="text" onChange={(e)=>sendResult(e)} />
+                <input type="text" onChange={(e) => onChangeRating(e)}></input>
             </div>
+
+            <div className="submit" onClick={(e)=>submitRate(e)}>
+                    <h1>Submit</h1>
+                </div>
             
             <Link to="/connection">
             <div className='connect-more'>
