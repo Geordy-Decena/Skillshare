@@ -34,8 +34,9 @@ function Results() {
     }
    
     function checkName(){
-
+        
     }
+
     useEffect(() => {
         fetch('/userName')
         .then(res => res.text()).then(data => checkName(data));
