@@ -5,13 +5,11 @@ import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 function Results() {
 
     const [isName, setName] = useState(
-        {
-            user: ""
-        });
+        {match: ""}
+    );
 
     const [isRating, setRating] = useState({
-        rating: "",
-        skill: ""
+        rating: ""
     });
 
     function onChangeRating(e) {
@@ -33,9 +31,14 @@ function Results() {
         console.log(isRating);
     }
 
+    function change(data){
+        const data2 = JSON.parse(data);
+        setName({match: data})
+    }
+
     useEffect(() => {
         fetch('/userName')
-            .then(res => res.text()).then(data => setName(data));
+            .then(res => res.text()).then(data => change(data));
     }, [])
     //split this string in half? these two names here
 
