@@ -15,7 +15,7 @@ function App() {
           <Route exact path="/" component={Login} />
           <Route exact path="/register" component={Register} />
           <Route exact path="/results" component={Results} />
-          <Route exact path="/connection" component={Connection} />
+          <Route exact path="/connect" component={Connection} />
         </Switch>
       </Router>
     </Fragment>
