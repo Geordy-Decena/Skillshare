@@ -18,6 +18,16 @@ function Login() {
         setUser({ ...isUser, password: e.target.value })
     }
 
+    function checkLogin(data) {
+        var data2 = JSON.parse(data)
+        if (data2.auth == 1) {
+            window.location.href = "/connect"
+        }
+        else {
+            alert("Email does not exist")
+        }
+    }
+
     function submitd() {
         const response = fetch('/loginData', {
             method: 'POST',
@@ -26,7 +36,7 @@ function Login() {
                 'Accept': 'application/json'
             },
             body: JSON.stringify(isUser)
-        }).then(res => res.text()).then(data => console.log(data))
+        }).then(res => res.text()).then(data => checkLogin(data))
         if (response.ok) {
             console.log("it worked")
         }

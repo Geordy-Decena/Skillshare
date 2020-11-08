@@ -3,11 +3,16 @@ import '../css/connection.css';
 import LearnList from './learnList'
 import TeachList from './teachList'
 import book from '../imgs/book.png'
+import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 
 function Connection() {
 
     const [isLearn, setLearn] = useState(false)
     const [isTeach, setTeach] = useState(false)
+
+    function matchPage() {
+        window.location.href = "/match"
+    }
 
     return (
         <Fragment>
@@ -24,7 +29,7 @@ function Connection() {
                 )}
             </div>
             {(isLearn == false && isTeach == false) && (
-                <div className="connectBtn">
+                <div className="connectBtn" onClick={() => matchPage()}>
                     <h1>Connect!</h1>
                     <img src={book} className="bookConnection"></img>
                 </div>

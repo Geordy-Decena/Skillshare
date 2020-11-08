@@ -26,7 +26,7 @@ function Results() {
         fetch('/userName').then(
             res => res.text()
         ).then(data => {
-            console.log(data.text);
+            console.log(data);
             //setName(data.text);
             //split this string in half? these two names here
         });   
@@ -55,7 +55,7 @@ function Results() {
             </form>
 
             <div className='connect-more'>
-                <Link to="/components/connection">Connect more</Link>
+                <Link to="/connection">Connect more</Link>
             </div>
             </div>
         </Fragment>

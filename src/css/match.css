@@ -1,0 +1,97 @@
+.matchDiv{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #FCDEBE;
+}
+.match{
+    position: relative;
+    margin: auto;
+    width: 900px;
+    height: 700px;
+    top: 20px;
+    background-color: #FCDEBE;
+    box-shadow: 2px 2px 5px black;
+}
+
+.matchDiv h1{
+    position: relative;
+    margin: auto;
+    width: 700px;
+    font-size: 70px;
+    top: 50px;
+    text-align: center;
+    font-weight: 300;
+}
+
+.userP1{
+    position: absolute;
+    transform: scale(0.4) translate(-60px,-200px);
+}
+
+.userP2{
+    position: absolute;
+    transform: scale(0.4) translate(1000px,-200px);
+}
+
+.userSkillDiv{
+    position: relative;
+    margin: auto ;
+    top: -290px;
+    text-align: center;
+    width: 800px;
+}
+
+.user1{
+    position: relative;
+    width: 220px;
+    display: inline-block;
+}
+
+.user2{
+    position: relative;
+    width: 220px;
+    display: inline-block;
+}
+
+.users{
+    position: relative;
+    width: 220px;
+    display: inline-block;
+}
+
+
+.username{
+    position: relative;
+    top: 0px;
+    width: 150px;
+    margin: auto;
+    text-align: center;
+    font-size: 40px;
+}
+
+.skill{
+    position: relative;
+    width: 150px;
+    font-size: 40px;
+    margin: auto;
+    top: 0px;
+    text-align: center;
+    padding-bottom: 15px;
+}
+
+.finish{
+    position: relative;
+    border: 2px solid black;
+    border-radius: 10px;
+    text-align: center;
+    top: -220px;
+    font-size: 50px;
+    margin: auto;
+    width: 300px;
+    transition: all 0.4s ease-in-out;
+}
+
+.finish:hover{
+    background-color: #ddc3a8;
+}

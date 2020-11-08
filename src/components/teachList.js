@@ -42,7 +42,7 @@ function TeachList(props) {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
             },
-            body: JSON.stringify("run")
+            body: JSON.stringify(isNewSkill)
         }).then(res => res.text()).then(data => console.log(data))
         if (response.ok) {
             console.log("it worked")
@@ -75,7 +75,7 @@ function TeachList(props) {
                     </div>
                     {isUserList.list.map((skill) => {
                         return (
-                            <div className="skill">
+                            <div className="skillLearn">
                                 <h1>{skill[0]}</h1>
                                 <h2>{skill[1]}</h2>
                             </div>
