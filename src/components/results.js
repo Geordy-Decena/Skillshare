@@ -5,7 +5,6 @@ import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 function Results() {
 
     const [isName, setName] = useState({text: ""});
-    //console.log(isName.text)
 
     function sendResult(e){
         const response = fetch('/userRating', {  
@@ -25,38 +24,30 @@ function Results() {
     useEffect(() => {
         fetch('/userName').then(
             res => res.text()
-        ).then(data => {
-            console.log(data);
-            //setName(data.text);
-            //split this string in half? these two names here
-        });   
+        ).then(data => console.log(data));
     }, [])
+    //setName(data.text);
+    //split this string in half? these two names here
+
 
     return (
         <Fragment >
-            <div clasName='results-page'>
+            <div className='results-page'>
+
+            <div className='active-user'>show active user</div>
             <div className='title'>
-                {/* How would would you rate {isName.text} skills? */}
+                How would you rate - skills? 
                 </div>
 
-            <form class='contain-list'>
-                <input type="text" pattern="[0-9]*" onChange={(e)=>sendResult(e)} />
-                {/* <input type="checkbox" onClick={() => sendResult()}></input>
-                <p>Basic</p>
-
-                <input type="checkbox" onClick={() => sendResult()}></input>
-                <p>Intermediate</p>
-
-                <input type="checkbox" onClick={() => sendResult()}></input>
-                <p>Advance</p>
-
-                <input type="checkbox" />
-                <p>Expert</p> */}
-            </form>
-
-            <div className='connect-more'>
-                <Link to="/connection">Connect more</Link>
+            <div className='contain-input'>
+                <input type="text" onChange={(e)=>sendResult(e)} />
             </div>
+            
+            <Link to="/connection">
+            <div className='connect-more'>
+                <h1>Connect more</h1>
+            </div>
+            </Link>
             </div>
         </Fragment>
     )
