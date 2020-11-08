@@ -55,3 +55,8 @@
     transform: scale(0.3);
     transition: all 2s ease-in-out;
 }
+
+.connectionMatch{
+    position: absolute;
+    visibility: hidden;
+}
