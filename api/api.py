@@ -183,7 +183,6 @@ def userRatings():
 @app.route('/userName', methods=['GET', 'POST'])
 def userName():
     return{
-        'user': userList[activeIndex],
         'match': userList[matchedIndex]
     }
 
