@@ -10,6 +10,7 @@ userCount = 0
 userList = []
 testUserCount = 4
 testUserList = []
+SelectedSkill = "None"
 
 
 class user:
@@ -52,16 +53,16 @@ class user:
 testEmail = ["john@gmail.com", "doe@gmail.com",
              "Shirley@gmail.com", "lol@gmail.com"]
 testPassword = ["1234", "abcd", "easyAs", "lol"]
-testLSkills = [["Geography", 7], ["Soccer", 3],
+testLSkills = [["Geography", 7], ["History", 3],
                ["Biology", 1], ["JavaScript", 4]]
 testTSkills = [["History", 5], ["React", 3], ["Physics", 6], ["Chemistry", 8]]
 
 for i in range(testUserCount):
-    print("SETTING UP TEST USERS")
-    print(i)
     testUserList.append(user(testEmail[i], testPassword[i]))
     testUserList[i].learn.append(testLSkills[i])
     testUserList[i].teach.append(testTSkills[i])
+    testUserList[i].skillLearnCount += 1
+    testUserList[i].skillTeachCount += 1
 
 app = Flask(__name__)
 
@@ -131,28 +132,41 @@ def userDataTeach():
 def computeMatch():
     global activeIndex
     global matchedIndex
+    global SelectedSkill
     matchedIndex = -1
 
-    match = "not found"
-    didWork = False
+    #match = "not found"
+    #didWork = False
     data = request.get_json()
     skillToLearn = data["skill"]
+
+    skillToTeach = "DID NOT WORK"
     #level = data["level"]
     # DOESNT CHECK IF MATCH WANT TO LEARN WHAT THE USER CAN TEACH
-    for i in range(userCount):
-        if(i != activeIndex and indexOfTeach(testUserList[i], skillToLearn) != -1):
+    for i in range(testUserCount):
+        if(indexOfTeach(testUserList[i], skillToLearn) != -1):
             matchedIndex = i
-            # list(set(a).intersection(b))
+            common = list(set(userList[activeIndex].teachSkillArr()).intersection(
+                testUserList[i].learnSkillArr()))
+            skillToTeach = common[0]
 
-    if(matchedIndex != -1):
-        didWork = True
-        match = "lmfao"
+    matchUser = testUserList[matchedIndex].email
+    # if(matchedIndex != -1):
+    #didWork = True
+    #matchUser = testUserList[matchedIndex].email
 
-    print(didWork)
-    print(userList[matchedIndex].email)
+    print("Yah it ran")
+    print(testUserList[matchedIndex].email)
+    SelectedSkill = skillToLearn
+
     return{
-        'found': str(didWork),
-        'match': match
+        # 'found': str(didWork),
+        'user': userList[activeIndex].email,
+        'userSkillLevel': userList[activeIndex].learn[indexOfLearn(userList[activeIndex], skillToLearn)][1],
+        'matchedUser': matchUser,
+        'matchedUserSkill': skillToTeach,
+        'matchedUserSkillLevel': testUserList[matchedIndex].learn[indexOfLearn(testUserList[matchedIndex], skillToTeach)][1]
+
     }
 
 
@@ -161,14 +175,14 @@ def computeMatch():
 def userRatings():
     global userCount
     data = request.get_json()
-    skill = data["skill"]
     rating = data["rating"]
+    userList[activeIndex].learn[indexOfLearn(userList[activeIndex], SelectedSkill)][1] = (
+        userList[activeIndex].learn[indexOfLearn(userList[activeIndex], SelectedSkill)][1] + rating)/2
 
 
 @app.route('/userName', methods=['GET', 'POST'])
 def userName():
     return{
-        'user': userList[activeIndex],
         'match': userList[matchedIndex]
     }
 
@@ -200,7 +214,7 @@ def indexOfEmail(email):
 
 def indexOfTeach(usar, skill):
     for i in range(usar.skillTeachCount):
-        if(usar.teach[i] == skill):
+        if(usar.teach[i][0] == skill):
             return i
 
     return -1
@@ -208,7 +222,7 @@ def indexOfTeach(usar, skill):
 
 def indexOfLearn(usar, skill):
     for i in range(usar.skillLearnCount):
-        if(usar.learn[i] == skill):
+        if(usar.learn[i][0] == skill):
             return i
 
     return -1
