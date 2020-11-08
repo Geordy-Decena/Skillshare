@@ -1,8 +1,22 @@
+.banner{
+    background-color:  #FCDEBE;
+    color: black;
+}
+
+.text{
+    font-size: 18px;
+    position:relative; 
+    left:1300px;
+}
+
 .connect{
     font-size: 24px;
     color:black;
     background-color: #FCDEBE;
-    margin:auto;
+    width: 300px;
     padding: '20px';
     text-align: center;
+    position: relative;
+    top: 400px;
 }
+

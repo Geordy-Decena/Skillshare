@@ -23,7 +23,7 @@ function Register() {
     }
 
     function submit() {
-        const response = fetch('/loginData', {
+        const response = fetch('/registerData', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

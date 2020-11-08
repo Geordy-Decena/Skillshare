@@ -11,11 +11,12 @@ function Connection(){
     return(
         <Fragment>
             <div class='banner' >
-                Logout
+               <div class='text' > <Link to="/login">Logout</Link> </div>
             </div>
         <div class = "connect" onClick={activateConnection}>
             <p>Connect</p>
         </div>
+
         </Fragment> 
     );
 }
