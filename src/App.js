@@ -6,6 +6,7 @@ import Login from './components/login'
 import Register from './components/register'
 import Playground from './components/playground'
 import Connect from './components/connection'
+import Match from './components/match'
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route exact path="/register" component={Register} />
           <Route exact path="/playground" component={Playground} />
           <Route exact path="/connect" component={Connect} />
+          <Route exact path="/match" component={Match} />
         </Switch>
       </Router>
     </Fragment>
