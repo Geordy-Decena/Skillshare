@@ -4,44 +4,40 @@ import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 
 function Results() {
 
+    const [isName, setName] = useState({text: ""});
+    //console.log(isName.text)
+
     function sendResult(e){
-        const response = fetch('/userRating', {  //need to get route from Ben
+        const response = fetch('/userRating', {  
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
             },
-            body: JSON.stringify(e.target.value, ),   //have to give you the skill
+            body: JSON.stringify(e.target.value)  
         })
         if (response.ok) {
             console.log("it worked")
         }
         console.log(e.target.value);
     }
-
-    function getName(){
-        fetch('/userName')
-        .then(response => response.json()).then(data => {
-            data.text
-        })  //insert port from Ben
-        const name = response.json();    //
-        return name;
-    }
+   
+    useEffect(() => {
+        fetch('/userName').then(
+            res => res.text()
+        ).then(data => {
+            console.log(data.text);
+            //setName(data.text);
+            //split this string in half? these two names here
+        });   
+    }, [])
 
     return (
         <Fragment >
             <div clasName='results-page'>
-                <div>{name.map(info => <Text>{info}</Text>)}
+            <div className='title'>
+                {/* How would would you rate {isName.text} skills? */}
                 </div>
-            <div>
-                How would would you rate
-            </div>
-
-            <View>
-                {name.map(info => <Text>{info}</Text>)}
-            </View>
-
-            <div>skills?</div>
 
             <form class='contain-list'>
                 <input type="text" pattern="[0-9]*" onChange={(e)=>sendResult(e)} />
