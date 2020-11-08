@@ -1,3 +1,7 @@
+*{
+    font-family: Arial, sans-serif;
+}
+
 .connection{
     position: fixed;
     background-color: #FCDEBE;
