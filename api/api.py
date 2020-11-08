@@ -30,8 +30,8 @@ class user:
     def learnSkillLvlArr(self):
         allLvls = []
         for i in range(self.skillLearnCount):
-            print(i)
-            print(userList[activeIndex].learn[i][1])
+            # print(i)
+            # print(userList[activeIndex].learn[i][1])
             allLvls.append(userList[activeIndex].learn[i][1])
         return allLvls
 
@@ -42,7 +42,7 @@ class user:
         return allSkills
 
     def teachSkillLvlArr(self):
-        return allLvls
+        allLvls = []
         for i in range(self.skillTeachCount):
             allLvls.append(userList[activeIndex].teach[i][1])
         return allLvls
