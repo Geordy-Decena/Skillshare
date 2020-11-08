@@ -175,10 +175,11 @@ def computeMatch():
 def userRatings():
     global userCount
     data = request.get_json()
-    rating = data["rating"]
-    userList[activeIndex].learn[indexOfLearn(userList[activeIndex], SelectedSkill)][1] = (
-        userList[activeIndex].learn[indexOfLearn(userList[activeIndex], SelectedSkill)][1] + rating)/2
-
+    rating = int(data["rating"])
+    userList[matchedIndex].learn[indexOfLearn(userList[matchedIndex], SelectedSkill)][1] = str(int((int(userList[matchedIndex].learn[indexOfLearn(userList[matchedIndex], SelectedSkill)][1]) + rating)/2))
+    return{
+        'output': 'success'
+    }
 
 @app.route('/userName', methods=['GET', 'POST'])
 def userName():

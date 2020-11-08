@@ -11,15 +11,15 @@ function Results() {
         });
 
     const [isRating, setRating] = useState({
-        rating: "",
-        skill: ""
+        rating: ""
     });
 
     function onChangeRating(e) {
+        console.log(e.target.value)
         setRating({ ...isRating, rating: e.target.value })
     }
 
-    function submitRate(e) {
+    function submitRate() {
         const response = fetch('/userRatings', {
             method: 'POST',
             headers: {
@@ -27,22 +27,21 @@ function Results() {
                 'Accept': 'application/json'
             },
             body: JSON.stringify(isRating)
-        })
+        }).then(res => res.text()).then(data => console.log(data))
         if (response.ok) {
-            console.log("pass ratings worked")
+            console.log("it worked")
         }
-        console.log(isRating);
     }
 
-    // function handleName(data) {
-    //     var data2 = JSON.parse(data)
-    //     setName({ ...isName, user: data2.name })
-    // }
+    function handleName(data) {
+        var data2 = JSON.parse(data)
+        setName({ ...isName, user: data2.match })
+    }
 
     useEffect(() => {
         fetch('/userName').then(
             res => res.text()
-        ).then(data => console.log(data));
+        ).then(data => handleName(data));
     }, [])
 
     //split this string in half? these two names here
@@ -54,7 +53,7 @@ function Results() {
 
                 <div className='active-user'>show active user</div>
                 <div className='title'>
-                    How would you rate - skills?
+                    How would you rate {isName.user}'s skills?
                 </div>
 
                 <div className='contain-input' onChange={(e) => onChangeRating(e)}>
