@@ -36,7 +36,7 @@ class user:
         return allLvls
 
     def teachSkillArr(self):
-        allskills = []
+        allSkills = []
         for i in range(self.skillTeachCount-1):
             allSkills.append(userList[activeIndex].teach[i][0])
         return allSkills
@@ -119,7 +119,7 @@ def userDataTeach():
 
 
 @app.route('/computeMatch', methods=['GET', 'POST'])
-def userDataTeach():
+def computeMatch():
     global activeIndex
     matchedIndex = -1
     match = "not found"
@@ -144,7 +144,7 @@ def userDataTeach():
 
 # Figure out how to hold ratings for a user's skill
 @app.route('/userRatings', methods=['GET', 'POST'])
-def registerData():
+def userRatings():
     global userCount
     data = request.get_json()
     skill = data["skill"]
@@ -152,7 +152,7 @@ def registerData():
 
 
 @app.route('/userName', methods=['GET', 'POST'])
-def registerData():
+def userName():
     return{'user': userList[activeIndex],
            'match': userList[matchedIndex]
            }
