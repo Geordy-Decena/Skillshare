@@ -1,23 +1,35 @@
 import React, { useState, useEffect, Fragment } from 'react';
 import '../css/connection.css';
-import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
+import LearnList from './learnList'
+import TeachList from './teachList'
+import book from '../imgs/book.png'
 
-function Connection(){
+function Connection() {
 
-    function activateConnection(){
+    const [isLearn, setLearn] = useState(false)
+    const [isTeach, setTeach] = useState(false)
 
-    }
-
-    return(
+    return (
         <Fragment>
-            <div class='banner' >
-               <div class='text' > <Link to="/login">Logout</Link> </div>
+            <div className="connection">
+                {isTeach == false && (
+                    <div className="learnComp">
+                        <LearnList handleClick={() => { setLearn(!isLearn) }} />
+                    </div>
+                )}
+                {isLearn == false && (
+                    <div className="teachComp">
+                        <TeachList handleClick={() => { setTeach(!isTeach) }} />
+                    </div>
+                )}
             </div>
-        <div class = "connect" onClick={activateConnection}>
-            <p>Connect</p>
-        </div>
-
-        </Fragment> 
+            {(isLearn == false && isTeach == false) && (
+                <div className="connectBtn">
+                    <h1>Connect!</h1>
+                    <img src={book} className="bookConnection"></img>
+                </div>
+            )}
+        </Fragment>
     );
 }
 
