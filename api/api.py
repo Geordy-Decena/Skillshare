@@ -23,13 +23,13 @@ class user:
 
     def learnSkillArr(self):
         allSkills = []
-        for i in range(self.skillLearnCount):
+        for i in range(self.skillLearnCount-1):
             allSkills.append(userList[activeIndex].learn[i][0])
         return allSkills
 
     def learnSkillLvlArr(self):
         allLvls = []
-        for i in range(self.skillLearnCount):
+        for i in range(self.skillLearnCount-1):
             print(i)
             print(userList[activeIndex].learn[i][1])
             allLvls.append(userList[activeIndex].learn[i][1])
@@ -37,13 +37,13 @@ class user:
 
     def teachSkillArr(self):
         allskills = []
-        for i in range(self.skillTeachCount):
+        for i in range(self.skillTeachCount-1):
             allSkills.append(userList[activeIndex].teach[i][0])
         return allSkills
 
     def teachSkillLvlArr(self):
         return allLvls
-        for i in range(self.skillTeachCount):
+        for i in range(self.skillTeachCount-1):
             allLvls.append(userList[activeIndex].teach[i][1])
         return allLvls
 
@@ -123,7 +123,7 @@ def userDataTeach():
     global activeIndex
     matchedIndex = -1
     match = "not found"
-
+    list(set(a).intersection(b))
     data = request.get_json()
     skillToLearn = data["skill"]
     #level = data["level"]
@@ -131,6 +131,7 @@ def userDataTeach():
     for i in range(userCount):
         if(i != activeIndex and indexOfTeach(userList[i], skillToLearn) != -1):
             matchedIndex = i
+            for(j in range(userList[i].))
 
     if(matchedIndex != -1):
         match = userList[matchIndex]
@@ -148,8 +149,6 @@ def registerData():
     data = request.get_json()
     skill = data["skill"]
     rating = data["rating"]
-
-    return{'auth': str(1)}
 
 
 @app.route('/userName', methods=['GET', 'POST'])
