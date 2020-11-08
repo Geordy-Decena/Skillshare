@@ -23,13 +23,13 @@ class user:
 
     def learnSkillArr(self):
         allSkills = []
-        for i in range(self.skillLearnCount-1):
+        for i in range(self.skillLearnCount):
             allSkills.append(userList[activeIndex].learn[i][0])
         return allSkills
 
     def learnSkillLvlArr(self):
         allLvls = []
-        for i in range(self.skillLearnCount-1):
+        for i in range(self.skillLearnCount):
             print(i)
             print(userList[activeIndex].learn[i][1])
             allLvls.append(userList[activeIndex].learn[i][1])
@@ -37,13 +37,13 @@ class user:
 
     def teachSkillArr(self):
         allSkills = []
-        for i in range(self.skillTeachCount-1):
+        for i in range(self.skillTeachCount):
             allSkills.append(userList[activeIndex].teach[i][0])
         return allSkills
 
     def teachSkillLvlArr(self):
         return allLvls
-        for i in range(self.skillTeachCount-1):
+        for i in range(self.skillTeachCount):
             allLvls.append(userList[activeIndex].teach[i][1])
         return allLvls
 
