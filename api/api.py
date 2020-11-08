@@ -61,17 +61,17 @@ app = Flask(__name__)
 
 @app.route('/loginData', methods=['GET', 'POST'])
 def loginData():
-    data = request.get_json()
-    email = data["email"]
-    password = data["password"]
-    if(indexOfEmail(email) != -1 and userList[indexOfEmail(email)].password == password):
-        activeIndex = indexOfEmail(email)
-        print(activeIndex)
+    # data = request.get_json()
+    # email = data["email"]
+    # password = data["password"]
+    # if(indexOfEmail(email) != -1 and userList[indexOfEmail(email)].password == password):
+    #     activeIndex = indexOfEmail(email)
+    #     print(activeIndex)
         return{'auth': str(1)}
-    else:
-        return{
-            'auth': str(0)
-        }
+    # else:
+        # return{
+        #     'auth': str(0)
+        # }
 
 
 @app.route('/registerData', methods=['GET', 'POST'])
@@ -123,6 +123,7 @@ def userDataTeach():
     global activeIndex
     matchedIndex = -1
     match = "not found"
+    didWork = False
     list(set(a).intersection(b))
     data = request.get_json()
     skillToLearn = data["skill"]
@@ -136,7 +137,7 @@ def userDataTeach():
         match = userList[matchIndex]
 
     return{
-        'found': str(didWork)
+        'found': str(didWork),
         'match': match
     }
 
