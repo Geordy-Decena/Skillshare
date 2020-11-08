@@ -40,7 +40,7 @@ function Register() {
         <Fragment>
             <div className="homepageDiv">
                 <div className="form">
-                    <h1>SkillShare</h1>
+                    <h1>Share</h1>
                     <h2>Email</h2>
                     <div className="inputDiv">
                         <input className="input" onChange={(e) => onChangeEmail(e)}></input>
