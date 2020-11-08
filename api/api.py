@@ -55,9 +55,11 @@ testLSkills = [["Geography", 7], ["Soccer", 3],
 testTSkills = [["History", 5], ["React", 3], ["Physics", 6], ["Chemistry", 8]]
 
 for i in range(userCount):
+    print("SETTING UP TEST USERS")
+    print(i)
     userList.append(user(testEmail[i], testPassword[i]))
     # userList[i].learn.append(testLSkills[i])
-    # userList[i].teach.append(testTSkills[i])
+    userList[i].teach.append(testTSkills[i])
 
 app = Flask(__name__)
 
@@ -99,6 +101,10 @@ def userDataLearn():
     level = data["level"]
     userList[activeIndex].learn.append([skill, level])
     userList[activeIndex].skillLearnCount += 1
+    print("ACTIVE USER IS")
+    print(activeIndex)
+    print(userList[activeIndex].email)
+    print(userList[activeIndex].learn[0][0])
     return{
         'levels': userList[activeIndex].learnSkillLvlArr(),
         'skills': userList[activeIndex].learnSkillArr()
