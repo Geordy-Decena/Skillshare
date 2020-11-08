@@ -131,7 +131,6 @@ def userDataTeach():
     for i in range(userCount):
         if(i != activeIndex and indexOfTeach(userList[i], skillToLearn) != -1):
             matchedIndex = i
-            for(j in range(userList[i].))
 
     if(matchedIndex != -1):
         match = userList[matchIndex]
