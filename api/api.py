@@ -123,6 +123,7 @@ def userDataTeach():
     global activeIndex
     matchedIndex = -1
     match = "not found"
+    didWork = False
     list(set(a).intersection(b))
     data = request.get_json()
     skillToLearn = data["skill"]
@@ -136,7 +137,7 @@ def userDataTeach():
         match = userList[matchIndex]
 
     return{
-        'found': str(didWork)
+        'found': str(didWork),
         'match': match
     }
 
