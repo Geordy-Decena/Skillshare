@@ -16,7 +16,7 @@ function TeachList(props) {
 
     const [isNewSkill, setNewSkill] = useState({
         skill: "",
-        level: 10,
+        level: 1,
     })
 
 

@@ -6,7 +6,8 @@ import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 function LearnList(props) {
 
     const [isUserList, setUserList] = useState({
-        list: [["Basketball", 3], ["Soccer", 3], ["Hockey", 3], ["Baseball", 3]]
+        list: ["ball", "soccer", "tennis"],
+        rate: ["1", "4", "7"]
     })
 
     const [isList, setList] = useState({
@@ -19,7 +20,16 @@ function LearnList(props) {
         level: 10,
     })
 
+    useEffect(() => {
+        fetch('/sendLearnData').then(
+            res => res.text()
+        ).then(data => prepareData(data));
+    }, [])
 
+    function prepareData(data) {
+        var data2 = JSON.parse(data)
+        setUserList({ list: data2.skills, rate: data2.levels })
+    }
 
     function submitSkill() {
         if (isNewSkill.skill != "") {
@@ -74,8 +84,7 @@ function LearnList(props) {
                 {isUserList.list.map((skill) => {
                     return (
                         <div className="skillLearn">
-                            <h1>{skill[0]}</h1>
-                            <h2>{skill[1]}</h2>
+                            <h1>{skill}</h1>
                         </div>
                     )
                 })}

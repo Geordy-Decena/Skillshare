@@ -19,14 +19,13 @@ function Login() {
     }
 
     function checkLogin(data) {
-        console.log(data)
-        // var data2 = JSON.parse(data)
-        // if (data2.auth == 1) {
-        //     window.location.href = "/connect"
-        // }
-        // else {
-        //     alert("Email does not exist")
-        // }
+        var data2 = JSON.parse(data)
+        if (data2.auth == 1) {
+            window.location.href = "/connect"
+        }
+        else {
+            alert("Email does not exist")
+        }
     }
 
     function submitd() {

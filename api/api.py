@@ -23,27 +23,27 @@ class user:
 
     def learnSkillArr(self):
         allSkills = []
-        for i in range(self.skillLearnCount-1):
+        for i in range(self.skillLearnCount):
             allSkills.append(userList[activeIndex].learn[i][0])
         return allSkills
 
     def learnSkillLvlArr(self):
         allLvls = []
-        for i in range(self.skillLearnCount-1):
-            print(i)
-            print(userList[activeIndex].learn[i][1])
+        for i in range(self.skillLearnCount):
+            # print(i)
+            # print(userList[activeIndex].learn[i][1])
             allLvls.append(userList[activeIndex].learn[i][1])
         return allLvls
 
     def teachSkillArr(self):
-        allskills = []
-        for i in range(self.skillTeachCount-1):
+        allSkills = []
+        for i in range(self.skillTeachCount):
             allSkills.append(userList[activeIndex].teach[i][0])
         return allSkills
 
     def teachSkillLvlArr(self):
-        return allLvls
-        for i in range(self.skillTeachCount-1):
+        allLvls = []
+        for i in range(self.skillTeachCount):
             allLvls.append(userList[activeIndex].teach[i][1])
         return allLvls
 
@@ -61,17 +61,17 @@ app = Flask(__name__)
 
 @app.route('/loginData', methods=['GET', 'POST'])
 def loginData():
-    # data = request.get_json()
-    # email = data["email"]
-    # password = data["password"]
-    # if(indexOfEmail(email) != -1 and userList[indexOfEmail(email)].password == password):
-    #     activeIndex = indexOfEmail(email)
-    #     print(activeIndex)
+    data = request.get_json()
+    email = data["email"]
+    password = data["password"]
+    if(indexOfEmail(email) != -1 and userList[indexOfEmail(email)].password == password):
+        activeIndex = indexOfEmail(email)
+        print(activeIndex)
         return{'auth': str(1)}
-    # else:
-        # return{
-        #     'auth': str(0)
-        # }
+    else:
+        return{
+            'auth': str(0)
+        }
 
 
 @app.route('/registerData', methods=['GET', 'POST'])
@@ -99,8 +99,9 @@ def userDataLearn():
     userList[activeIndex].learn.append([skill, level])
     userList[activeIndex].skillLearnCount += 1
     return{
-        'skills': userList[activeIndex].learnSkillArr(),
-        'levels': userList[activeIndex].learnSkillLvlArr()
+        'levels': userList[activeIndex].learnSkillLvlArr(),
+        'skills': userList[activeIndex].learnSkillArr()
+
     }
 
 
@@ -113,13 +114,13 @@ def userDataTeach():
     userList[activeIndex].teach.append([skill, level])
     userList[activeIndex].skillTeachCount += 1
     return{
-        'skills': userList[activeIndex].teachSkillArr(),
-        'levels': userList[activeIndex].teachSkillLvlArr()
+        'levels': userList[activeIndex].teachSkillLvlArr(),
+        'skills': userList[activeIndex].teachSkillArr()
     }
 
 
 @app.route('/computeMatch', methods=['GET', 'POST'])
-def userDataTeach():
+def computeMatch():
     global activeIndex
     matchedIndex = -1
     match = "not found"
@@ -144,7 +145,7 @@ def userDataTeach():
 
 # Figure out how to hold ratings for a user's skill
 @app.route('/userRatings', methods=['GET', 'POST'])
-def registerData():
+def userRatings():
     global userCount
     data = request.get_json()
     skill = data["skill"]
@@ -152,10 +153,29 @@ def registerData():
 
 
 @app.route('/userName', methods=['GET', 'POST'])
-def registerData():
-    return{'user': userList[activeIndex],
-           'match': userList[matchedIndex]
-           }
+def userName():
+    return{
+        'user': userList[activeIndex],
+        'match': userList[matchedIndex]
+    }
+
+
+@app.route('/sendLearnData', methods=['GET', 'POST'])
+def sendLearnData():
+    return{
+        'levels': userList[activeIndex].learnSkillLvlArr(),
+        'skills': userList[activeIndex].learnSkillArr()
+    }
+
+
+@app.route('/sendTeachData', methods=['GET', 'POST'])
+def sendTeachData():
+    return{
+        # 'levels': userList[activeIndex].teachSkillLvlArr(),
+        # 'skills': userList[activeIndex].teachSkillArr()
+        'levels': "hello",
+        'skills': "learn"
+    }
 
 
 def indexOfEmail(email):
