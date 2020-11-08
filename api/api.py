@@ -10,6 +10,7 @@ userCount = 0
 userList = []
 testUserCount = 4
 testUserList = []
+SelectedSkill = "None"
 
 
 class user:
@@ -131,6 +132,7 @@ def userDataTeach():
 def computeMatch():
     global activeIndex
     global matchedIndex
+    global SelectedSkill
     matchedIndex = -1
 
     #match = "not found"
@@ -155,6 +157,8 @@ def computeMatch():
 
     print("Yah it ran")
     print(testUserList[matchedIndex].email)
+    SelectedSkill = skillToLearn
+
     return{
         # 'found': str(didWork),
         'user': userList[activeIndex].email,
@@ -172,7 +176,8 @@ def userRatings():
     global userCount
     data = request.get_json()
     rating = data["rating"]
-    userList[activeIndex].
+    userList[activeIndex].learn[indexOfLearn(userList[activeIndex], SelectedSkill)][1] = (
+        userList[activeIndex].learn[indexOfLearn(userList[activeIndex], SelectedSkill)][1] + rating)/2
 
 
 @app.route('/userName', methods=['GET', 'POST'])
