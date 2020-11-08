@@ -15,20 +15,20 @@
     margin-bottom: 10px;
 }
 
-.skill{
+.skillLearn{
     position: relative;
     width: 100%;
     height: 30px;
 }
 
-.skill h1{
+.skillLearn h1{
     position: absolute;
     left: 20px;
     font-size: 20px;
     font-weight: 100;
 }
 
-.skill h2{
+.skillLearn h2{
     position: absolute;
     right: 42px;
     font-size: 20px;

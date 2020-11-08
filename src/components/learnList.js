@@ -73,7 +73,7 @@ function LearnList(props) {
                 </div>
                 {isUserList.list.map((skill) => {
                     return (
-                        <div className="skill">
+                        <div className="skillLearn">
                             <h1>{skill[0]}</h1>
                             <h2>{skill[1]}</h2>
                         </div>
