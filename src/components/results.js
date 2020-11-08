@@ -34,16 +34,16 @@ function Results() {
         console.log(isRating);
     }
 
-    function handleName(data) {
-        var data2 = JSON.parse(data)
-        setName({ ...isName, user: data2.name })
-    }
+    // function handleName(data) {
+    //     var data2 = JSON.parse(data)
+    //     setName({ ...isName, user: data2.name })
+    // }
 
-    // useEffect(() => {
-    //     fetch('/userName').then(
-    //         res => res.text()
-    //     ).then(data => handleName(data));
-    // }, [])
+    useEffect(() => {
+        fetch('/userName').then(
+            res => res.text()
+        ).then(data => console.log(data));
+    }, [])
 
     //split this string in half? these two names here
 
@@ -61,11 +61,10 @@ function Results() {
                     <input type="text" ></input>
                 </div>
 
-                <div className="submit" onClick={() => submitRate()}>
+                <div className="submitSkillLevel" onClick={() => submitRate()}>
                     <h1>Submit</h1>
                 </div>
-
-                <Link to="/connection">
+                <Link to="/connect">
                     <div className='connect-more'>
                         <h1>Connect more</h1>
                     </div>

@@ -17,6 +17,15 @@ function Connection(props) {
     const [isSkill, setSkill] = useState({ skill: "" })
     const [isMatch, setMatch] = useState({ match: false })
 
+    const [isInfo, setInfo] = useState({
+        userInfo: "",
+        userSkillLearn: "",
+        userSkillTeach: "",
+        matchedUserInfo: "",
+        matchedUserSkillLearn: "",
+        matchedUserSkillTeach: "",
+    })
+
     function matchPage() {
         setMatch({ match: true })
         const response = fetch('/computeMatch', {
@@ -26,15 +35,19 @@ function Connection(props) {
                 'Accept': 'application/json'
             },
             body: JSON.stringify(isSkill)
-        }).then(res => res.text()).then(data => console.log(data))
+        }).then(res => res.text()).then(data => { setInfoFunc(data); console.log(data) })
         if (response.ok) {
             console.log("it worked")
         }
     }
 
+    function setInfoFunc(data) {
+        var data2 = JSON.parse(data)
+        setInfo({ userInfo: data2.user, userSkillLearn: isSkill.skill, userSkillTeach: data2.matchedUserSkill, matchedUserInfo: data2.matchedUser, matchedUserSkillLearn: isSkill.skill, matchedUserSkillTeach: data2.matchedUserSkill })
+    }
+
     function setChange(data) {
         setSkill({ skill: data })
-        console.log(isSkill)
         //props.bringLearnSkill(isSkill.data)
     }
 
@@ -80,7 +93,7 @@ function Connection(props) {
             )}
             {isMatch.match == true && (
                 <Fragment>
-                    <Match skill={isSkill.skill} />
+                    <Match userInfo={isInfo.userInfo} userSkillLearn={isInfo.userSkillLearn} userSkillTeach={isInfo.userSkillTeach} matchedUserInfo={isInfo.matchedUserInfo} matchedUserSkillLearn={isInfo.matchedUserSkillLearn} matchedUserSkillTeach={isInfo.matchedUserSkillTeach} />
                 </Fragment>
             )}
         </Fragment>

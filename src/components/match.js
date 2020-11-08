@@ -3,6 +3,7 @@ import '../css/match.css';
 import user from '../imgs/user.png'
 import Connection from '../components/connection'
 import LearnList from './learnList'
+import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 
 function Match(props) {
 
@@ -20,6 +21,7 @@ function Match(props) {
 
     return (
         <Fragment>
+            {console.log(props)}
             <div className="matchDiv">
                 <div className="match">
                     <h1>We found a match!</h1>
@@ -32,9 +34,9 @@ function Match(props) {
                 </div>
                 <div className="userSkillDiv">
                     <div className="user1">
-                        <div className="username">John</div>
-                        <div className="skill">C++</div>
-                        <div className="skill">{props.skill}</div>
+                        <div className="username">{props.userInfo}</div>
+                        <div className="skill">{props.userSkillLearn}</div>
+                        <div className="skill">{props.userSkillTeach}</div>
                     </div>
                     <div className="users">
                         <div className="username">Name</div>
@@ -42,13 +44,13 @@ function Match(props) {
                         <div className="skill">Teach</div>
                     </div>
                     <div className="user2">
-                        <div className="username">Pete</div>
-                        <div className="skill">Calculus</div>
-                        <div className="skill">C++</div>
+                        <div className="username">{props.matchedUserInfo}</div>
+                        <div className="skill">{props.matchedUserSkillTeach}</div>
+                        <div className="skill">{props.matchedUserSkillLearn}</div>
                     </div>
                 </div>
                 <div className="finish">
-                    Finish Meet
+                    <Link to="/results">Finish Meet</Link>
                 </div>
             </div>
         </Fragment >

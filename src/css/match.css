@@ -62,7 +62,6 @@
     display: inline-block;
 }
 
-
 .username{
     position: relative;
     top: 0px;
@@ -81,7 +80,7 @@
     margin: auto;
     top: 0px;
     text-align: center;
-    padding-bottom: 15px;
+    padding-bottom: 5px;
 }
 
 .finish{
@@ -89,7 +88,7 @@
     border: 2px solid black;
     border-radius: 10px;
     text-align: center;
-    top: -220px;
+    top: -250px;
     font-size: 50px;
     color: #3A445D;
     margin: auto;
