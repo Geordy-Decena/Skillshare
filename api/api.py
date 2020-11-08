@@ -99,8 +99,9 @@ def userDataLearn():
     userList[activeIndex].learn.append([skill, level])
     userList[activeIndex].skillLearnCount += 1
     return{
-        'skills': userList[activeIndex].learnSkillArr(),
-        'levels': userList[activeIndex].learnSkillLvlArr()
+        'levels': userList[activeIndex].learnSkillLvlArr(),
+        'skills': userList[activeIndex].learnSkillArr()
+
     }
 
 
@@ -113,8 +114,8 @@ def userDataTeach():
     userList[activeIndex].teach.append([skill, level])
     userList[activeIndex].skillTeachCount += 1
     return{
-        'skills': userList[activeIndex].teachSkillArr(),
-        'levels': userList[activeIndex].teachSkillLvlArr()
+        'levels': userList[activeIndex].teachSkillLvlArr(),
+        'skills': userList[activeIndex].teachSkillArr()
     }
 
 
@@ -153,9 +154,27 @@ def userRatings():
 
 @app.route('/userName', methods=['GET', 'POST'])
 def userName():
-    return{'user': userList[activeIndex],
-           'match': userList[matchedIndex]
-           }
+    return{
+        'user': userList[activeIndex],
+        'match': userList[matchedIndex]
+    }
+
+
+@app.route('/sendLearnData', methods=['GET', 'POST'])
+def sendLearnData():
+    return{
+        'levels': userList[activeIndex].learnSkillLvlArr(),
+        'skills': userList[activeIndex].learnSkillArr()
+    }
+
+
+@app.route('/sendTeachData', methods=['GET', 'POST'])
+def sendTeachData():
+    return{
+        'levels': userList[activeIndex].teachSkillLvlArr(),
+        'skills': userList[activeIndex].teachSkillArr()
+
+    }
 
 
 def indexOfEmail(email):
