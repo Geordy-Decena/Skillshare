@@ -4,8 +4,8 @@ from flask_cors import CORS
 from flask import Flask, request
 
 # RESET AFTER!!
-activeIndex = 2
-matchedIndex = 1
+activeIndex = -1
+matchedIndex = -1
 userCount = 4
 userList = []
 
@@ -23,7 +23,7 @@ class user:
     def learnSkillArr(self):
         allSkills = []
         for i in range(self.skillLearnCount):
-            allSkills.append(userList[activeIndex].learn[i][0])
+            allSkills.append(self.learn[i][0])
         return allSkills
 
     def learnSkillLvlArr(self):
@@ -31,19 +31,19 @@ class user:
         for i in range(self.skillLearnCount):
             # print(i)
             # print(userList[activeIndex].learn[i][1])
-            allLvls.append(userList[activeIndex].learn[i][1])
+            allLvls.append(self.learn[i][1])
         return allLvls
 
     def teachSkillArr(self):
         allSkills = []
         for i in range(self.skillTeachCount):
-            allSkills.append(userList[activeIndex].teach[i][0])
+            allSkills.append(self.teach[i][0])
         return allSkills
 
     def teachSkillLvlArr(self):
         allLvls = []
         for i in range(self.skillTeachCount):
-            allLvls.append(userList[activeIndex].teach[i][1])
+            allLvls.append(self.teach[i][1])
         return allLvls
 
 
@@ -56,14 +56,15 @@ testTSkills = [["History", 5], ["React", 3], ["Physics", 6], ["Chemistry", 8]]
 
 for i in range(userCount):
     userList.append(user(testEmail[i], testPassword[i]))
-    userList[i].learn.append(testLSkills[i])
-    userList[i].teach.append(testTSkills[i])
+    # userList[i].learn.append(testLSkills[i])
+    # userList[i].teach.append(testTSkills[i])
 
 app = Flask(__name__)
 
 
 @app.route('/loginData', methods=['GET', 'POST'])
 def loginData():
+    global activeIndex
     data = request.get_json()
     email = data["email"]
     password = data["password"]
@@ -121,7 +122,9 @@ def userDataTeach():
 @app.route('/computeMatch', methods=['GET', 'POST'])
 def computeMatch():
     global activeIndex
+    global matchedIndex
     matchedIndex = -1
+
     match = "not found"
     didWork = False
     data = request.get_json()
@@ -135,10 +138,10 @@ def computeMatch():
 
     if(matchedIndex != -1):
         didWork = True
-        match = userList[matchIndex]
+        match = "lmfao"
 
     print(didWork)
-    print(match.email)
+    print(userList[matchedIndex].email)
     return{
         'found': str(didWork),
         'match': match

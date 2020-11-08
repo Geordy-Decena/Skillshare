@@ -18,7 +18,7 @@ function Match() {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
             },
-            body: {skill:"React"}
+            body: "{\"skill\":\"React\"}"
         }).then(res => res.text()).then(data => console.log(data))
         if (response.ok) {
             console.log("it worked")
