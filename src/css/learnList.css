@@ -23,10 +23,19 @@
 
 .skillLearn h1{
     position: absolute;
-    left: 20px;
+    left: 40px;
     font-size: 20px;
     font-weight: 100;
 }
+
+.skillLearn input{
+    position: absolute;
+    left: 15px;
+    top: 5px;
+    font-size: 20px;
+    font-weight: 100;
+}
+
 
 .skillLearn h2{
     position: absolute;
@@ -165,4 +174,27 @@
     padding: 5px;
     font-size: 20px;
     right: 0px;
+}
+
+.rateLearnDiv{
+    position: absolute;
+    display: block;
+    top: 90px;
+    right: 20px;
+    width: 50px;
+    height: 300px;
+}
+
+.rateLearn{
+    position: relative;
+    display: block;
+    float: right;
+    width: 50px;
+    height: 30px;
+}
+
+
+.rateLearn h1{
+    margin-top: 10px;
+    font-size: 20px;
 }
