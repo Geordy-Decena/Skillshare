@@ -6,19 +6,21 @@ from flask import Flask, request
 # RESET AFTER!!
 activeIndex = -1
 matchedIndex = -1
-userCount = 4
+userCount = 0
 userList = []
+testUserCount = 4
+testUserList = []
 
 
 class user:
-    learn = []
-    teach = []
-    skillLearnCount = 0
-    skillTeachCount = 0
 
     def __init__(self, email, password):
         self.email = email
         self.password = password
+        self.learn = []
+        self.teach = []
+        self.skillLearnCount = 0
+        self.skillTeachCount = 0
 
     def learnSkillArr(self):
         allSkills = []
@@ -54,12 +56,12 @@ testLSkills = [["Geography", 7], ["Soccer", 3],
                ["Biology", 1], ["JavaScript", 4]]
 testTSkills = [["History", 5], ["React", 3], ["Physics", 6], ["Chemistry", 8]]
 
-for i in range(userCount):
+for i in range(testUserCount):
     print("SETTING UP TEST USERS")
     print(i)
-    userList.append(user(testEmail[i], testPassword[i]))
-    # userList[i].learn.append(testLSkills[i])
-    userList[i].teach.append(testTSkills[i])
+    testUserList.append(user(testEmail[i], testPassword[i]))
+    testUserList[i].learn.append(testLSkills[i])
+    testUserList[i].teach.append(testTSkills[i])
 
 app = Flask(__name__)
 
@@ -138,7 +140,7 @@ def computeMatch():
     #level = data["level"]
     # DOESNT CHECK IF MATCH WANT TO LEARN WHAT THE USER CAN TEACH
     for i in range(userCount):
-        if(i != activeIndex and indexOfTeach(userList[i], skillToLearn) != -1):
+        if(i != activeIndex and indexOfTeach(testUserList[i], skillToLearn) != -1):
             matchedIndex = i
             # list(set(a).intersection(b))
 
