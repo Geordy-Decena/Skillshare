@@ -11,7 +11,9 @@
 
 .learnH1{
     padding: 10px;
+    color: #3A445D;
     font-size: 30px;
+    color: #3A445D;
     margin-bottom: 10px;
 }
 
@@ -25,7 +27,9 @@
     position: absolute;
     left: 40px;
     font-size: 20px;
+    color: #3A445D;
     font-weight: 100;
+    color: #3A445D;
 }
 
 .skillLearn input{
@@ -33,6 +37,8 @@
     left: 15px;
     top: 5px;
     font-size: 20px;
+    color: #3A445D;
+    color: #3A445D;
     font-weight: 100;
 }
 
@@ -41,6 +47,7 @@
     position: absolute;
     right: 42px;
     font-size: 20px;
+    color: #3A445D;
     font-weight: 100;
 }
 
@@ -53,12 +60,14 @@
     position: absolute;
     left: 20px;
     font-size: 20px;
+    color: #3A445D;
 }
 
 .skillTitle h2{
     position: absolute;
     right: 20px;
     font-size: 20px;
+    color: #3A445D;
 }
 
 .addSkill{
@@ -139,6 +148,7 @@
     position: relative;
     display: inline-block;
     font-size: 20px;
+    color: #3A445D;
     font-weight: 300;
     width: 180px;
     margin-bottom: 20px;
@@ -158,11 +168,13 @@
     width: 260px;
     height: 40px;
     font-size: 20px;
+    color: #3A445D;
 }
 
 .inputSkillDiv h1{
     position: absolute;
     font-size: 30px;
+    color: #3A445D;
     font-weight: 300;
     left: 0px;
 }
@@ -173,6 +185,7 @@
     width: 50px;
     padding: 5px;
     font-size: 20px;
+    color: #3A445D;
     right: 0px;
 }
 
@@ -196,5 +209,6 @@
 
 .rateLearn h1{
     margin-top: 10px;
+    color: #3A445D;
     font-size: 20px;
 }

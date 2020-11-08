@@ -34,14 +34,17 @@ function Results() {
         console.log(isRating);
     }
 
-    function checkName() {
-
+    function handleName(data) {
+        var data2 = JSON.parse(data)
+        setName({ ...isName, user: data2.name })
     }
 
-    useEffect(() => {
-        fetch('/userName')
-            .then(res => res.text()).then(data => checkName(data));
-    }, [])
+    // useEffect(() => {
+    //     fetch('/userName').then(
+    //         res => res.text()
+    //     ).then(data => handleName(data));
+    // }, [])
+
     //split this string in half? these two names here
 
 

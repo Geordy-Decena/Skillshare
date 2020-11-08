@@ -4,7 +4,10 @@ import LearnList from './learnList'
 import TeachList from './teachList'
 import Match from './match'
 import book from '../imgs/book.png'
+import loading from '../imgs/loading.png'
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
+import { Transition } from 'react-transition-group'
+
 
 function Connection(props) {
 
@@ -22,7 +25,7 @@ function Connection(props) {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
             },
-            body: isSkill
+            body: JSON.stringify(isSkill)
         }).then(res => res.text()).then(data => console.log(data))
         if (response.ok) {
             console.log("it worked")
@@ -37,6 +40,22 @@ function Connection(props) {
 
     return (
         <Fragment>
+            {isMatch.match == true && (
+                <Transition
+                    timeout={3000}
+                    in={true}
+                    appear
+                >{(status) => (
+                    <Fragment>
+                        <div className={`loadingDiv loadingDiv-${status}`}>
+                            <div className={`loading loading-${status}`}>
+                                <img src={loading}></img>
+                            </div>
+                        </div>
+                    </Fragment>
+                )}
+                </Transition>
+            )}
             {(isMatch.match == false) && (
                 <Fragment>
                     <div className="connection">
