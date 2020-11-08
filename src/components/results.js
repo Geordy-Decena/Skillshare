@@ -6,8 +6,7 @@ function Results() {
 
     const [isName, setName] = useState(
         {
-            user: "",
-            macth: ""
+            user: ""
         });
 
     const [isRating, setRating] = useState({
@@ -34,16 +33,11 @@ function Results() {
         console.log(isRating);
     }
 
-    function checkName() {
-
-    }
-
     useEffect(() => {
         fetch('/userName')
-            .then(res => res.text()).then(data => checkName(data));
+            .then(res => res.text()).then(data => setName(data));
     }, [])
     //split this string in half? these two names here
-
 
     return (
         <Fragment >
@@ -51,16 +45,14 @@ function Results() {
 
                 <div className='active-user'>show active user</div>
                 <div className='title'>
-                    How would you rate - skills?
+                    How would you rate {isName.text} skills?
                 </div>
 
                 <div className='contain-input' onChange={(e) => onChangeRating(e)}>
                     <input type="text" ></input>
                 </div>
 
-                <div className="submit" onClick={() => submitRate()}>
-                    <h1>Submit</h1>
-                </div>
+                <div className="submit" onClick={() => submitRate()}>Submit</div>
 
                 <Link to="/connection">
                     <div className='connect-more'>
