@@ -12,14 +12,21 @@ function Match() {
     })
 
     useEffect(() => {
+<<<<<<< HEAD
         console.log("match")
+=======
+>>>>>>> aae564bf3dd5c6ec4d827237d0e8c7a7d30b47a7
         const response = fetch('/computeMatch', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
             },
+<<<<<<< HEAD
             body: "{\"title\":\"Read a boo\"}"
+=======
+            body: "{\"skill\":\"React\"}"
+>>>>>>> aae564bf3dd5c6ec4d827237d0e8c7a7d30b47a7
         }).then(res => res.text()).then(data => console.log(data))
         if (response.ok) {
             console.log("it worked")
